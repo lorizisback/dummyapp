@@ -1,2 +1,2 @@
-# dummyapp
-A dummy app for Android
+# Dummy App
+An example app for Android basics 
