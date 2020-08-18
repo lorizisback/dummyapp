@@ -1,21 +1,23 @@
 package org.mastergluteus.testapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.actvity_sticazzi.*
+import kotlinx.android.synthetic.main.actvity_main.*
 
-class MainActivity : AppCompatActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        setContentView(R.layout.actvity_sticazzi)
-    }
+class MainActivity : AppCompatActivity(R.layout.actvity_main) {
 
     override fun onStart() {
         super.onStart()
 
-        val poesia = LocalPoemProvider.getPoem()
-        poem_field.text = poesia
+        button_continue.setOnClickListener {
+            navigateToDetail(text_input.text.toString())
+        }
+    }
+
+    fun navigateToDetail(text: String) {
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra(DetailActivity.DETAIL_EXTRA_KEY, text)
+        startActivity(intent)
     }
 }
